@@ -1,11 +1,15 @@
+//this chatbot talks about food and this meets requirement 1
 public class Bot1
 {
     int i=0;
+    int x=0;
+    String question = "";
     /**
      * Get a default greeting
      * 
      * @return a greeting
      */
+    //line 7-11 meets requirement 5
     public String getGreeting()
     {
 
@@ -24,22 +28,26 @@ public class Bot1
     public String getResponse(String statement)
     {
         String response = "";
-
         if (statement.length() == 0)
+        //if statements on line 30 meets requirement 4Ai
         {
             response = "Please answer the question";
+            //line 32 meets requirement 2Ai and requirement 4Aii
         }
 
         else if (findKeyword(statement, "no") >= 0)
         {
             response = "Why not?";
+            //line 39 meets requirement 4Aiii
         }
         else if (findKeyword(statement.toLowerCase(), "hi") >= 0
                 || findKeyword(statement.toLowerCase(), "hello") >= 0
                 || findKeyword(statement.toLowerCase(), "hey") >= 0
-                || findKeyword(statement.toLowerCase(), "hola") >= 0)
+                || findKeyword(statement.toLowerCase(), "hola") >= 0)                    
+                //line 38 to 82 meets requirement 2A
             {
-                System.out.println("Hi. How was your day? good, bad, or okay?");
+                question = "Hi. How was your day? good, bad, or okay?";
+                System.out.println(question);
                 i++;
             }
         else if((i == 1)&& findKeyword(statement.toLowerCase(), "good") >= 0
@@ -49,28 +57,32 @@ public class Bot1
                     || findKeyword(statement.toLowerCase(), "okay") >= 0
                     || findKeyword(statement.toLowerCase(), "fine") >= 0)
             {
-                    System.out.println("Oh Okay. Do you like Sprite or Coke?");
+                    question = "Oh Okay. Do you like Sprite or Coke?";
+                    System.out.println(question);
                     i++;
             }
         else if((i == 2) && (findKeyword(statement.toLowerCase(), "sprite") >= 0
                     || findKeyword(statement.toLowerCase(), "coke") >= 0))
             {
-                    System.out.println("Oh cool. Lets have a drink later. Isn't the weather great? please reponse with yea or nah.");
+                    question = "Oh cool. Lets have a drink later. Isn't the weather great? please reponse with yea or nah.";
+                    System.out.println(question);
                     i++;
             } 
         else if((i == 3) && findKeyword(statement.toLowerCase(), "yeah") >= 0
                      || findKeyword(statement.toLowerCase(), "nah") >= 0)
             {
-                System.out.println("yea, i think so too. You hungry? Please respond with yea or nah");
+                question = "yea, i think so too. You hungry? Please respond with yea or nah";
+                System.out.println(question);
                 i++;
             }
         
         else if((i == 4) && findKeyword(statement.toLowerCase(), "yea") >= 0)
                     //|| findKeyword(statement.toLowerCase(), "nah") >= 0)
             {
+                question = "Do you like fried rice, hamburger, pizza, or spaghetti?";
                 System.out.println("Ok. Lets have fun.");
                 System.out.println("Lets cook some food.");
-                System.out.println("Do you like fried rice, hamburger, pizza, or spaghetti?");
+                System.out.println(question);
                 i++;
             }
         else if((i == 5) && (findKeyword(statement.toLowerCase(), "pizza") >= 0))
@@ -125,6 +137,7 @@ public class Bot1
             response = getRandomResponse();
         }
         return response;
+    
     }
 
     /**
@@ -143,6 +156,7 @@ public class Bot1
      * @return the index of the first occurrence of goal in
      *         statement or -1 if it's not found
      */
+    //line 157 to 205 meets requirement 3
     private int findKeyword(String statement, String goal,
     int startPos)
     {
@@ -217,64 +231,87 @@ public class Bot1
      * 
      * @return a non-committal string
      */
-    private String getRandomResponse()
+    
+    public String getRandomResponse()
     {
         final int NUMBER_OF_RESPONSES = 11;
         double r = Math.random();
         int whichResponse = (int)(r * NUMBER_OF_RESPONSES);
         String response = "";
+        //line 236 to 306 meets requirement 2B
+        if (x==5)
+        //line 241 to 415 meets requirement 4Aiv
+        {
+         System.out.println("Please answer the question");
+         System.out.println(question);
+        }
+        else {
         if (whichResponse == 0)
         {
             response = "What are you saying?.";
+            x++;
         }
         else if (whichResponse == 1)
         {
             response = "Hmmm.";
+            x++;
         }
         else if (whichResponse == 2)
         {
             response = "Please coperate";
+            x++;
         }
         else if (whichResponse == 3)
         {
             response = "You don't say.";
+            x++;
         }
         else if (whichResponse == 4)
         {
             response = "-_-.";
+            x++;
         }
         else if (whichResponse == 5)
         {
             response = "Can you not?";
+            x++;
         }
         else if (whichResponse == 6)
         {
             response = "why are u doing this to me?";
+            x++;
         }
         else if (whichResponse == 7)
         {
             response = "What are u trying to say?";
+            x++;
         }
         else if (whichResponse == 8)
         {
             response = "Stop.";
+            x++;
         }
         else if (whichResponse == 7)
         {
             response = "No. Just No.";
+            x++;
         }
         else if (whichResponse == 8)
         {
             response = "Leave.";
+            x++;
         }
         else if (whichResponse == 9)
         {
             response = "I am so done with you";
+            x++;
         }
         else if (whichResponse == 10)
         {
             response = "Good Bye.";
+            x++;
         }
+    }
         return response;
     }
 

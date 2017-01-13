@@ -21,7 +21,7 @@ public class ChatbotRunner3
         
         while (!statement.equals("Bye"))
         {
-            System.out.println (chattie.getResponse(statement));
+            System.out.println(chattie.getResponse(statement));
             statement = in.nextLine();
         }
     }
